@@ -28,7 +28,17 @@
 
 
 3. ## Applications
-    - To Do
+    - A project is a collection of configuration and apps. A [Django App](https://docs.djangoproject.com/en/4.0/intro/tutorial01/) is basically a module of your project that has a functionality.
+
+    - This project has a project configuration folder called 'recipy_website':
+        - urls.py
+            - Store all the urls of the project.
+
+        - settings.py
+            - This file is responsable to inform Django about the configurations of the project, such as the database, the installed apps, and others... 
+
+    - Also, there's an app folder called 'main':
+        - This app is responsible for most of the website functionalities (CRUD, login, sign up...).
 
 
 
