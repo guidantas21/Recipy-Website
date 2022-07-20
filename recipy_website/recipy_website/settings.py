@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
+from telnetlib import LOGOUT
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -43,9 +44,8 @@ INSTALLED_APPS = [
 
     # bootstrap style
     'crispy_forms',
-    'crispy_bootstrap5'
+    'crispy_bootstrap5',
 ]
-
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 
@@ -85,16 +85,39 @@ WSGI_APPLICATION = 'recipy_website.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'd5rpasmfsbmpst',
-        'USER': 'etkqbbujxbxaca',
-        'PASSWORD': 'fcc7529a90ef0acecd72e4db1b7246da32b814585622a25c200a67f8f1729aa0',
-        'HOST': 'ec2-3-223-169-166.compute-1.amazonaws.com',
-        'PORT': '5432'
+import sys
+
+# TESTING DATABASE
+if 'test' in sys.argv:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'dbdqjjvpb8jqr',
+            'USER': 'leqpwjflssaecr',
+            'PASSWORD': '8e022635b60b9d1966b067d32352ff7d3fa2d980b9edb26f81da4fcac4af8e68',
+            'HOST': 'ec2-100-26-39-41.compute-1.amazonaws.com',
+            'PORT': '5432',
+            'TEST': {
+                'NAME': 'dbdqjjvpb8jqr'
+            }
+        }
     }
-}
+
+# PRODUCTION DATABASE
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'd5rpasmfsbmpst',
+            'USER': 'etkqbbujxbxaca',
+            'PASSWORD': 'fcc7529a90ef0acecd72e4db1b7246da32b814585622a25c200a67f8f1729aa0',
+            'HOST': 'ec2-3-223-169-166.compute-1.amazonaws.com',
+            'PORT': '5432',
+            'TEST': {
+                'NAME': 'd5rpasmfsbmpst'
+            }
+        }
+    }
 
 
 # Password validation
@@ -137,3 +160,7 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+LOGIN_REDIRECT_URL = '/home'
+LOGOUT_REDIRECT_URL = '/login'

@@ -19,5 +19,7 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     # all the urls from the main app
-    path('', include('main.urls')), 
+    path('', include('main.urls')),
+    # prebuilt urls that automatically do things like log in, log out, password reset...
+    path('', include('django.contrib.auth.urls')), 
 ]
