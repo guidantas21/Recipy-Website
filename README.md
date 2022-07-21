@@ -43,4 +43,6 @@
 
 
 4. ## Authentication
-    - To Do
+    - Using the [Django User Model](https://docs.djangoproject.com/en/4.0/ref/contrib/auth/) and the [Django Authentication System](https://docs.djangoproject.com/en/4.0/topics/auth/default/) was possible to implement user registration and login.
+    - Each User has a required username, a required email, first name, last name and a password.
+    - It's possible to register, login and logout users. 
