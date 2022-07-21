@@ -4,6 +4,8 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
+
+# only logged users can access this page
 @login_required(login_url="login")
 def home(request):
     return render(request, 'main/home.html')
@@ -26,8 +28,9 @@ def sign_up(request):
             login(request, user)
 
             return redirect('/home')
-
+    # get method
     else:
+        # blank registration form
         form = RegistrationForm()
-
+    # render the sign_up.html page, passing the blank form
     return render(request, 'registration/sign_up.html', {'form': form})

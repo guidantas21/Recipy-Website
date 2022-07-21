@@ -1,5 +1,6 @@
 {% extends 'main/base.html' %}
 
+<!--loading the crispy forms-->
 {% load crispy_forms_tags %}
 
 {% block title %}Sign Up{% endblock %}
@@ -8,8 +9,12 @@
 
 {% block content %}
 <form method="post">
-    {% csrf_token %} {{form|crispy}}
+    <!--Security feature used everytime you have form method post-->
+    {% csrf_token %} 
+    <!--sign up form (RegistrationForm) with the crispy styling-->
+    {{form|crispy}}
     <p>Have an account? Login <a href="/sign-up">here</a>!</p>
+    <!--post the data to the backend-->
     <button type="submit" class="btn btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off">
         Register
     </button>
